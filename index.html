@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конспекты школьных уроков</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    input, textarea, select, button {
+      display: block;
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .lesson-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Конспекты школьных уроков</h1>
+  </header>
+
+  <section id="loginForm">
+    <h2>Вход</h2>
+    <form id="login">
+      <input type="text" id="username" placeholder="Логин" required>
+      <input type="password" id="password" placeholder="Пароль" required>
+      <button type="submit">Войти</button>
+    </form>
+    <p id="loginError" style="color: red;"></p>
+    <button id="registerButton">Зарегистрироваться</button>
+  </section>
+
+  <section id="registerForm" style="display: none;">
+    <h2>Регистрация</h2>
+    <form id="teacherForm">
+      <input type="text" id="fullName" placeholder="ФИО" required>
+      <input type="text" id="teacherUsername" placeholder="Логин" required>
+      <input type="password" id="teacherPassword" placeholder="Пароль" required>
+      <select id="role" required>
+        <option value="">Выберите роль</option>
+        <option value="учитель">Учитель</option>
+        <option value="ученик">Ученик</option>
+      </select>
+      <button type="submit">Зарегистрировать</button>
+    </form>
+    <p id="registrationError" style="color: red;"></p>
+  </section>
+
+  <section id="mainContent" style="display: none;">
+    <nav>
+      <ul>
+        <li><a href="#lessons">Список уроков</a></li>
+        <li id="addLessonLink" style="display: none;"><a href="#add-lesson">Добавить урок</a></li>
+      </ul>
+    </nav>
+
+    <section id="add-lesson" style="display: none;">
+      <h2>Добавить урок</h2>
+      <form id="lessonForm" enctype="multipart/form-data">
+        <input type="text" id="lessonTitle" placeholder="Название урока" required>
+        <textarea id="lessonDescription" placeholder="Описание урока" required></textarea>
+        <input type="file" id="lessonMedia" multiple required>
+        <button type="submit">Добавить урок</button>
+      </form>
+    </section>
+
+    <section id="lessons">
+      <h2>Список уроков</h2>
+
+      <h3>Просмотренные уроки</h3>
+      <div id="viewedLessonsList"></div>
+
+      <h3>Непросмотренные уроки</h3>
+      <div id="unviewedLessonsList"></div>
+    </section>
+  </section>
+
+  <section id="evaluateSection" style="display: none;">
+    <h2>Оценка урока</h2>
+    <span id="currentLessonTitle"></span>
+    <textarea id="evaluationComment" placeholder="Ваш отзыв"></textarea><br>
+    <input type="number" id="evaluationScore" placeholder="Оценка (1-5)" min="1" max="5">
+    <button id="submitEvaluation">Отправить оценку</button>
+  </section>
+
+  <section id="lessonDetail" style="display: none;">
+    <h2>Подробное описание урока</h2>
+
+    <h3 id="detailLessonTitle"></h3>
+    <div id="detailLessonMedia"></div>
+    <p id="detailLessonDescription"></p>
+    <button onclick="goBackToLessons()">Назад к урокам</button>
+
+    <h3>Данный урок просмотрен:</h3>
+    <div id="viewedLessons"></div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
